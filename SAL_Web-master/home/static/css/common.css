@@ -18,3 +18,20 @@
     background-color: rgb(231, 224, 125);
     color: #fff;
 }
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #000;
+}
+td.date{
+    width: 75%;
+    padding: 6px;
+    border: 1px solid #000;
+    background-color: #000;
+}
+td.name{
+    width: 25%;
+    padding: 6px;
+    border: 1px solid #000;
+}
+    

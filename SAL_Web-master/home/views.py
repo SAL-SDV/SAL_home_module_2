@@ -25,14 +25,14 @@ def setting(request):
         connection.close()
 
     for t in table:
-        if request.GET.get(t["id"] + '_update') == None or request.GET.get(t["id"] + '_update') == '':
-            print(t["id"] + 'はnullですよ')
+        if request.GET.get(t["ID"] + '_update') == None or request.GET.get(t["ID"] + '_update') == '':
+            print(t["ID"] + 'はnullですよ')
         else:
-            print(t["id"] + 'のNameを' +
-                  request.GET.get(t["id"] + '_update') + 'に変更しました。')
-            sql = "UPDATE sal.SensorList SET Name = '" + \
-                request.GET.get(t["id"] + '_update') + \
-                "' WHERE id = '" + t["id"] + "'; "
+            print(t["ID"] + 'のNameを' +
+                  request.GET.get(t["ID"] + '_update') + 'に変更しました。')
+            sql = "UPDATE sal.sensorlist SET Name = '" + \
+                request.GET.get(t["ID"] + '_update') + \
+                "' WHERE ID = '" + t["ID"] + "'; "
 
             connection = getConnection()
             with connection.cursor() as cursor:
@@ -64,15 +64,27 @@ def home(request):
         result = cursor.fetchone()
         path = result["path"]
 
-        sql = "SELECT Date FROM sal.imagelist WHERE id = (SELECT MAX(id) FROM sal.imagelist)"
+        sql = "SELECT imagedata FROM sal.imagelist WHERE id = (SELECT MAX(id) FROM sal.imagelist)"
         cursor.execute(sql)
         result = cursor.fetchone()
-        data = result["Date"]
+        data = result["imagedata"]
+
+        sql = "SELECT id FROM sal.imagelist WHERE id = (SELECT MAX(id) FROM sal.imagelist)"
+        cursor.execute(sql)
+        result = cursor.fetchone()
+        Sid = result["id"]
+        Sid=int(Sid)%2+1
+        sql = "SELECT Name FROM sal.sensorlist WHERE id = " + str(Sid)
+        cursor.execute(sql)
+        result = cursor.fetchone()
+        name = result["Name"]
+
     # sqlから切断
     connection.close()
     d = {
         'path': path,
         'data': data,
+        'Name': name,
     }
 
     return render(request, 'home.html', d)
@@ -82,7 +94,7 @@ def logs(request):
     connection = getConnection()
     logs = []
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM sal.imagedate "
+        sql = "SELECT * FROM sal.imagelist "
         cursor.execute(sql)
         for row in cursor.fetchall():
             logs.append(row)
@@ -92,3 +104,18 @@ def logs(request):
     }
     print(logs[1])
     return render(request, 'logs.html', d)
+
+def sensorlogs(request):
+    connection = getConnection()
+    slogs = []
+    with connection.cursor() as cursor:
+        sql = "SELECT * FROM sal.imagelist inner join sal.sensorlist ON sal.imagelist.cameraID = sal.sensorlist.id"
+        cursor.execute(sql)
+        for row in cursor.fetchall():
+            slogs.append(row)
+        connection.close()
+    d = {
+        'slogs':slogs,
+    }
+    print(slogs[1])
+    return render(request, 'sensorlogs.html', d)
