@@ -94,7 +94,8 @@ def logs(request):
     connection = getConnection()
     logs = []
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM sal.imagelist "
+
+        sql = "SELECT * FROM sal.imagelist"
         cursor.execute(sql)
         for row in cursor.fetchall():
             logs.append(row)

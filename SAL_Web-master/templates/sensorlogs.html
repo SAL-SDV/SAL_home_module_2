@@ -1,35 +1,35 @@
 {% extends "base.html" %}
 {% block title %}ログ{% endblock %}
 {% block body %}
-    <div class="page-header">
-        <h1>ログ</h1>
+<div class="all">
+    <div class="Navigation">
+        <div class="page-header">
+            <h1>ログ</h1>
+        </div>
+        <label class="col-sm-2 control-label">
+            <div>
+                <button class="button home" type="button" onclick="location.href='{% url 'home:home' %}'">ホーム</button>
+            </div>
+            <div>
+                <button class="button setting" type="button"
+                    onclick="location.href='{% url 'home:setting' %}'">設定</button>
+            </div>
+            <div>
+                <button class="button logs" type="button" onclick="location.href='{% url 'home:logs' %}'">写真ログ</button>
+            </div>
+        </label>
     </div>
-    <div class="row">
-        <div class="col-sm-10">
-            <label class="col-sm-10 control-label">
-                <div class="container">
+    <div class="content">
                         <table class="table">
                             {% for slog in slogs %}
-                                <tr><td>{{ slog.imagedata }}</td>  <td>{{ slog.Name}}</td></tr>
+                            <tr>
+                                <td>{{ slog.imagedata }}</td>
+                                <td>{{ slog.Name}}</td>
+                            </tr>
                             {% endfor %}
                         </table>
-                </div>
-            </label>
-
-            <label class="col-sm-2 control-label">
-                <div>
-                    <button class="button home" type="button" onclick="location.href='{% url 'home:home' %}'">ホーム</button>
-                </div>
-                <div >
-                    <button class="button setting" type="button" onclick="location.href='{% url 'home:setting' %}'">設定</button>
-                </div>
-            </label>
-        </div>
+            <br>センサーの反応履歴を表示<br>
     </div>
+</div>
 
-
-
-    <br>
-    センサーの反応履歴を表示<br>
-
-{% endblock %}
+    {% endblock %}
