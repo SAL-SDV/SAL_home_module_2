@@ -6,27 +6,28 @@
         <div class="page-header">
             <h1>設定</h1>
         </div>
-        <label class="col-sm-2 control-label">
+      
             <div>
                 <button class="button home" type="button" onclick="location.href='{% url 'home:home' %}'">ホーム</button>
             </div>
             <div>
                 <button class="button logs" type="button" onclick="location.href='{% url 'home:logs' %}'">写真ログ</button>
             </div>
-            <div>
+           <!--<div>
                 <button class="button sensorlogs" type="button"
                     onclick="location.href='{% url 'home:sensorlogs' %}'">反応ログ</button>
-            </div>
-        </label>
+            </div>-->
+     
     </div>
 
     <div class="content">
         <div class="row">
             <div class="col-sm-10">
                 <label class="col-sm-10 control-label">
+                    <br><br><br>
                     {% for t in table %}
                     <form action="" method="get">
-                        <label>{{ t.ID }}:<input type="text" name="{{ t.ID }}_update" size="25" maxlength="20"
+                        <label>{{ t.id }}:<input type="text" name="{{ t.id }}_update" size="25" maxlength="20"
                                 placeholder="{{t.Name}}"></label>
                         <input type="submit" value="send">
                     </form>
@@ -34,8 +35,8 @@
                 </label>
             </div>
         </div>
-        <br>
-        機器の名前変更<br>
+    <br>
+    機器の名前変更<br>
     </div>
 </div>
 {% endblock %}

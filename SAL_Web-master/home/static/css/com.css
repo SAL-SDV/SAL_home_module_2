@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 .button{
     font-size: 1.4em;
     font-weight: bold;
@@ -22,3 +23,31 @@
     background-color: rgb(50,50,50);
     color: #fff;
 }
+
+    
+.all {
+    display: flex;
+    min-height: 100vh;
+}
+
+.Navigation {
+    width: 28%;
+    text-align: center;
+    background-color: #888;
+    color: #fff;
+}
+
+.page-header {
+    height: 100px;
+}
+
+.imagelog {
+    background-color: #ddd;
+}
+
+.content {
+    flex: 1;
+    background-color: #eee;
+    text-align: center;
+    margin-left: 10px;
+}   width: 300px;

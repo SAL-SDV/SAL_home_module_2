@@ -1,16 +1,16 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
 from datetime import datetime
-import pymysql.cursors
+import MySQLdb.cursors
 
 
 def getConnection():
-    return pymysql.connect(host='localhost',
+    return MySQLdb.connect(host='localhost',
                            user='user',
                            password='user',
                            db='sal',
                            charset='utf8',
-                           cursorclass=pymysql.cursors.DictCursor
+                           cursorclass=MySQLdb.cursors.DictCursor
                            )
 
 
@@ -25,14 +25,15 @@ def setting(request):
         connection.close()
 
     for t in table:
-        if request.GET.get(t["ID"] + '_update') == None or request.GET.get(t["ID"] + '_update') == '':
-            print(t["ID"] + 'はnullですよ')
+        if request.GET.get(t["id"] + '_update') == None or request.GET.get(t["id"] + '_update') == '':
+            print(t["id"] + 'はnullですよ')
+            print(t["Name"])
         else:
-            print(t["ID"] + 'のNameを' +
-                  request.GET.get(t["ID"] + '_update') + 'に変更しました。')
+            print(t["id"] + 'のNameを' +
+                  request.GET.get(t["id"] + '_update') + 'に変更しました。')
             sql = "UPDATE sal.sensorlist SET Name = '" + \
-                request.GET.get(t["ID"] + '_update') + \
-                "' WHERE ID = '" + t["ID"] + "'; "
+                request.GET.get(t["id"] + '_update') + \
+                "' WHERE ID = '" + t["id"] + "'; "
 
             connection = getConnection()
             with connection.cursor() as cursor:
@@ -68,6 +69,7 @@ def home(request):
         cursor.execute(sql)
         result = cursor.fetchone()
         data = result["imagedata"]
+        print(data)
 
         sql = "SELECT id FROM sal.imagelist WHERE id = (SELECT MAX(id) FROM sal.imagelist)"
         cursor.execute(sql)
@@ -95,7 +97,7 @@ def logs(request):
     logs = []
     with connection.cursor() as cursor:
 
-        sql = "SELECT * FROM sal.imagelist"
+        sql = "SELECT * FROM sal.imagelist ORDER BY id desc"
         cursor.execute(sql)
         for row in cursor.fetchall():
             logs.append(row)
