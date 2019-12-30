@@ -82,13 +82,13 @@ def change_img(path):
 
         else:  # 画像がフレーム外のものだったら
             break
-    
+
     #もし外出画像だったら
-   # print(judge,judge[0]/judge[1])
+    #print(judge,judge[0]/judge[1])
     #print(frame_num)
     cap.release()
 
-    cap = cv2.VideoCapture(name)  # opencvで動画を扱うための処理    
+    cap = cv2.VideoCapture(name)  # opencvで動画を扱うための処理
     if judge[0]/judge[1] > W/2:
         # 一番動体が画像の中心に近いフレームを指定
         cap.set(cv2.CAP_PROP_POS_FRAMES,frame_num)
@@ -98,8 +98,11 @@ def change_img(path):
             #cv2.imwrite("picture{:0=3}".format(frame_num)+".jpg",frame)  #画像を保存
             cv2.imwrite(name_fraze+".jpg",frame)  #画像を保存
             print(name_fraze+".jpg")   #保存画像のファイル名表示
+            cap.release()
+            return name_fraze+".jpg"  #検出に成功したら画像のpathを返す
 
     cap.release()
+    return False  #検出失敗
 if __name__=='__main__':
-    change_img('/home/pi/SAL_Web-master/media/movie/2019:12:26:18:25:46.h264')
+    change_img('F:\SAL_home_module_2\SAL_Web-master\media\movie\2019-12-26-19-24-16.h264')
     print("a")
