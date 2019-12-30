@@ -2,7 +2,7 @@
 
 ## 使い方
 1. SAL_Web_master/modules/に移動
-2. sudo
+2. sudo python3.5 send_img.py
 
 
 ### 注意事項
