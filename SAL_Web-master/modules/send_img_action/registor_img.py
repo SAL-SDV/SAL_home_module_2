@@ -16,10 +16,11 @@ def registor(path):
 
     cur = con.cursor()
 
-    dtstr = (path[-23:-4])
-    dt = datetime.datetime.strptime(dtstr, '%Y:%m:%d:%H:%M:%S')
 
-    cameraID = 1
+    dtstr = (path[-23:-4])
+    dt = datetime.datetime.strptime(dtstr,'%Y:%m:%d:%H:%M:%S')
+        
+    cameraID=1
 
     send_path = (''+path[-30:])
 
@@ -34,7 +35,7 @@ def registor(path):
             CREATE TABLE %s(
             id int(10) auto_increment not null primary key,
             imagedata datetime,
-            path varchar(255),
+            path varchar(255)
             cameraID varchar(20)
             )
             """ % table)
@@ -43,10 +44,11 @@ def registor(path):
 
             cur.execute("select * from imagelist")
             rows = cur.fetchall()
-            for row in rows:
-             print(row)
+            #for row in rows:
+             #print(row)
 
             con.commit()
+            print("db OK!!")
 
     except mysql.connector.Error as err:
             print("Failed crete: {}".format(err))

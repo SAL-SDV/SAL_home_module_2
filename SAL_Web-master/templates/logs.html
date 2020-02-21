@@ -4,15 +4,19 @@
 <div class="all">
     <div class="Navigation">
         <div class="page-header">
-            <h1>写真ログ</h1>
+            写真ログ
         </div>
             <div>
                 <button class="button home" type="button" onclick="location.href='{% url 'home:home' %}'">ホーム</button>
             </div>
-            <div>
+            <!--<div>
                 <button class="button setting" type="button"
                     onclick="location.href='{% url 'home:setting' %}'">設定</button>
+            </div>-->
+            <div>
+                <button class="button logs" type="button" onclick="location.href='{% url 'home:logs' %}'">写真ログ</button>
             </div>
+
             <!--<div>
                 <button class="button sensorlogs" type="button"
                     onclick="location.href='{% url 'home:sensorlogs' %}'">反応ログ</button>

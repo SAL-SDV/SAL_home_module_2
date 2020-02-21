@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+html {
+    overflow-y:scroll;
+}
+
+.button{
+    font-size: 3.5em;
+    font-weight: bold;
+    width: 280px;
+    height: 125px;
+    border-style: none;
+}
+.button.setting{
+    background-color: #248;
+    color: #fff;
+}
+.button.logs{
+    background-color: rgb(46, 211, 175);
+    color: #fff;
+    position: fixed;
+    top: 275px;
+    left: 30px;
+}
+.button.home{
+    background-color: rgb(231, 224, 125);
+    color: #fff;
+    position: fixed;
+    top: 150px;
+    left: 30px;
+}
+.button.sensorlogs{
+    background-color: rgb(50,50,50);
+    color: #fff;
+}
+
+    
+.all {
+    display: flex; 
+    min-height: 100vh;
+}
+
+.Navigation {
+    width: 300px;
+    text-align: center;
+    background-color: #888;
+    color: #fff;
+}
+
+.Navigation2 {
+    width: 320px;
+    text-align: center;
+    background-color: #888;
+    color: #fff;
+}                 
+.page-header {
+    height: 90px;
+    font-size:4.0em;
+    /*position: fixed;
+    top: 10px;
+    left: 60px;*/
+    /*padding:10px,auto*/;
+}
+
+.imagelog {
+    background-color: #ddd;
+}
+
+.content {
+    flex: 1;
+    background-color: #eee;
+    text-align: center;
+    margin-left: 10px;
+}
+

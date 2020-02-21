@@ -34,9 +34,12 @@ class ChangeHandler(FileSystemEventHandler):
         if match(event.src_path):
             print('Create',event.src_path)
             img_path = to_img.change_img(event.src_path)  #有効画像抽出
+            print(img_path[:5])
             if(img_path):
+                print("d")
                 registor.registor(img_path) #DB登録
-                send.send(img_path) #ファイル転送
+                #send.send(img_path) #ファイル転送
+                time.sleep(10)
 
     #ファイル変更時に実行
     def on_modified(self, event):
@@ -45,9 +48,12 @@ class ChangeHandler(FileSystemEventHandler):
         if match(event.src_path):
             print('Modified',event.src_path)
             img_path = to_img.change_img(event.src_path)  #有効画像抽出
+            #print(img_path[:5])
             if(img_path):
+                #print("a")
                 registor.registor(img_path) #DB登録
-                send.send(img_path) #ファイル転送
+                #send.send(img_path) #ファイル転送
+                time.sleep(10)
 
     #ファイル削除時に実行
     def on_deleted(self, event):
@@ -55,6 +61,7 @@ class ChangeHandler(FileSystemEventHandler):
             return
         if match(event.src_path):
             print('delete',event.src_path)
+            time.sleep(10)
 
 if __name__ in '__main__':
     event_handler = ChangeHandler()
