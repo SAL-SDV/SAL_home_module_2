@@ -16,7 +16,6 @@ def registor(path):
 
     cur = con.cursor()
 
-
     dtstr = (path[-23:-4])
     dt = datetime.datetime.strptime(dtstr,'%Y:%m:%d:%H:%M:%S')
         
@@ -58,5 +57,5 @@ def registor(path):
 
 if __name__ == '__main__':
     #このプログラムが直接呼び出された場合、errorメッセージを表示する
-    registor('/home/pi/SAL_Web-master/media/images/111001_2019:12:26:18:25:46.jpg')
-    #pritnt("error:send_img_registor.py-this file only used by import ")
+    pritnt("error:send_img_registor.py-this file only used by import ")
+    # registor('/home/pi/SAL_Web-master/media/images/111001_2019:12:26:18:25:46.jpg')

@@ -79,18 +79,18 @@ def change_img(path):
                 if (count - num - 1) < 10:
                     judge[0] +=  x+w/2  # 重心の位置を加算
                     judge[1] += 1  # 加算回数を記録
-            
+
             # -----画像処理終了-----
             num += 1  #ファイル名用の変数
 
         else:  # 画像がフレーム外のものだったら
             break
-   
+
    #もし外出画像だったら
     #print(judge,judge[0]/judge[1])
     #print(frame_num)
     cap.release()
-    cap = cv2.VideoCapture(name)  # opencvで動画を扱うための処理    
+    cap = cv2.VideoCapture(name)  # opencvで動画を扱うための処理
     print(judge)
     if judge[1] == 0:
         judge[1] = 1

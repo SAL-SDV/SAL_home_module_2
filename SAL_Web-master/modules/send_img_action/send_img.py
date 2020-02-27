@@ -6,7 +6,7 @@ import time as tm
 import paramiko
 import scp as scp
 
-#ここでは自前のラズパイでテスト
+#市役所サーバ（想定）の情報
 hostname = '202.17.19.236'
 port = 19122
 username = 'sdv2019a'
@@ -23,7 +23,6 @@ def send(path):
     print("scp_OK!")
 
 if __name__ == '__main__':
-    #このプログラムが直接呼び出された場合、適当なimgを転送する
     #path='/home/pi/SAL/viewer/public/images/2019:03:19:22:23:40.jpg'
     #send(path)
     print("NO!")
