@@ -2,15 +2,15 @@
 ***
 このディレクトリにはカメラから受け取った動画に対する一定の処理を行うプログラムが格納されています。
 
-#### movie_to_img.py
-/viewer/public/imgフォルダの中身が変更されたら、変更に応じてsend_img/にあるやつを実行します。
+#### send_img.py
+SAL_Web-master/media/movieフォルダの中身が変更されたら、変更に応じてsend_img_action/にあるやつを実行します。
 
-### send_img/配下
+### send_img_action/配下
 ___
 #### movie_to_img.py
 ラズパイ０から受け取った動画に対して帰宅・外出判定、有効画像の検出及び保存を行います。
 
-#### send_img_send.py
+#### send_img.py
 画像を市役所サーバに送信します。
 
 #### registor_img.py
